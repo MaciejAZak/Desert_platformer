@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
     [SerializeField] float Speed = 5f;
+    [SerializeField] float ClimbSpeed = 4f;
     [SerializeField] float jumpSpeed = 15f;
     bool isAlive = true;
 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         Run();
         FlipSprite();
         Jump();
+        Climb();
     }
 
     private void Run()
@@ -43,11 +45,32 @@ public class Player : MonoBehaviour
     {
         if(!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
+            Debug.Log("Touching ground");
+
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             Debug.Log("Jumped");
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
+        }
+    }
+
+    private void Climb()
+    {
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+        {
+            Debug.Log("Touching ladder");
+            float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+            Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, controlThrow * ClimbSpeed);
+            myRigidBody.velocity = playerVelocity;
+            bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+            myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+
+        }
+        else
+        {
+            Debug.Log("Not touching ladder");
+            myAnimator.SetBool("Climbing", false);
         }
     }
 
