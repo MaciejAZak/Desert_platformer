@@ -28,25 +28,46 @@ public class Player : MonoBehaviour
     {
         Run();
         FlipSprite();
-        Jump();
+        JumpValidation();
         Climb();
     }
 
     private void Run()
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(controlThrow * Speed, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
+
+        if (Input.GetKey("left shift"))
+        {
+            Debug.Log("Shift");
+            myRigidBody.velocity = new Vector2 (controlThrow * Speed * 1.5f, myRigidBody.velocity.y);
+        }
+        else
+        {
+            myRigidBody.velocity = new Vector2(controlThrow * Speed, myRigidBody.velocity.y);
+        }
+
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
+
+
+    }
+
+    private void JumpValidation()
+    {
+        if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+            {
+                Jump();
+            }
+            return;
+        }
+        Jump();
+
     }
 
     private void Jump()
     {
-        if(!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
-
-            Debug.Log("Touching ground");
-
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             Debug.Log("Jumped");
@@ -61,11 +82,13 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Touching ladder");
             float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-            Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, controlThrow * ClimbSpeed);
-            myRigidBody.velocity = playerVelocity;
-            bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
-
+            if (controlThrow !=0)
+            {
+                Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, controlThrow * ClimbSpeed);
+                myRigidBody.velocity = playerVelocity;
+                bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+                myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+            }
         }
         else
         {
