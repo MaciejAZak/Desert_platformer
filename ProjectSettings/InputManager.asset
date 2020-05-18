@@ -30,7 +30,7 @@ InputManager:
     altNegativeButton: s
     altPositiveButton: w
     gravity: 999
-    dead: 0.001
+    dead: 0
     sensitivity: 100
     snap: 1
     invert: 0
