@@ -95,7 +95,9 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        // TODO: DIE ONLY WHEN FALL ON SPIKES FROM ABOVE
+        // TODO: DONT DIE WHEN FALL FROM ABOVE ON ENEMIES
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");

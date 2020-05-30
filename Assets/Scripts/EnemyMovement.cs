@@ -6,11 +6,13 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 2f;
     Rigidbody2D myRigidBody;
+    BoxCollider2D myPeriscope;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myPeriscope = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,8 @@ public class EnemyMovement : MonoBehaviour
         return transform.localScale.x > 0;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    //TODO: Apply triggercollider only to periscope
+    private void OnTriggerExit2D(Collider2D myPeriscope)
     {
         Debug.Log("rotateEnemySprite");
         transform.localScale = new Vector2((Mathf.Sign(myRigidBody.velocity.x)), 1f);
