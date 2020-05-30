@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     Transform myTransform;
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    CapsuleCollider2D myCollider2D;
-    BoxCollider2D myFeetCollider;
+    BoxCollider2D myCollider2D;
+    CapsuleCollider2D myFeetCollider;
     float gravityAtStart;
 
     // Start is called before the first frame update
@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
         myTransform = GetComponent<Transform>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider2D = GetComponent<CapsuleCollider2D>();
-        myFeetCollider = GetComponent<BoxCollider2D>();
+        myCollider2D = GetComponent<BoxCollider2D>();
+        myFeetCollider = GetComponent<CapsuleCollider2D>();
         gravityAtStart = myRigidBody.gravityScale;
         climbingRightNow = false;
     }
