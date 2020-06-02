@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float ClimbSpeed = 4f;
     [SerializeField] float jumpSpeed = 15f;
     [SerializeField] Vector2 DeathKick = new Vector2(-2f, 200f);
+    [SerializeField] AudioClip deathSFX;
     bool isAlive = true;
     bool climbingRightNow = false;
 
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");
+            AudioSource.PlayClipAtPoint(deathSFX, FindObjectOfType<Camera>().transform.position);
             GetComponent<Rigidbody2D>().velocity = DeathKick;
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
