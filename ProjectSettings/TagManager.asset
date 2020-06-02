@@ -20,7 +20,7 @@ TagManager:
   - Enemies
   - Hazards
   - Door
-  - 
+  - Pickups
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 2681937477
+    locked: 0
+  - name: Pickups
+    uniqueID: 2144724855
     locked: 0
   - name: Player
     uniqueID: 3278476287
