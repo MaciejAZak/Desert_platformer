@@ -268,4 +268,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSFX: {fileID: 8300000, guid: 6e3498479d5753743a6f79120454c32d, type: 3}
-  Points: 10
+  Points: 15

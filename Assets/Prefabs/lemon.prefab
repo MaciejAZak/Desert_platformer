@@ -150,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 8058435687614994691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d634e04016f85434189c5e43cf879caf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a51a8ae24b25454aa958d05787bb964, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -267,5 +267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b56f42e822c78241a6c99079dcb8f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSFX: {fileID: 8300000, guid: 6e3498479d5753743a6f79120454c32d, type: 3}
-  Points: 10
+  pickupSFX: {fileID: 8300000, guid: d8ef725293df9bc48919116a7cd30131, type: 3}
+  Points: -1
