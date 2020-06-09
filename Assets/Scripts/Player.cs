@@ -49,10 +49,16 @@ public class Player : MonoBehaviour
     private void Run()
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        float RT = Input.GetAxis("XboxRightTrigger");
 
         if (Input.GetKey("left shift"))
         {
             Debug.Log("Shift");
+            myRigidBody.velocity = new Vector2(controlThrow * Speed * 1.5f, myRigidBody.velocity.y);
+        }
+        else if(Mathf.Round(RT)>0)
+        {
+            Debug.Log("RT clicked");
             myRigidBody.velocity = new Vector2(controlThrow * Speed * 1.5f, myRigidBody.velocity.y);
         }
         else

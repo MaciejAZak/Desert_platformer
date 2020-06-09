@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ScenePersist : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     int startingSceneIndex;
 

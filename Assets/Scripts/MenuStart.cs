@@ -9,6 +9,12 @@ public class MenuStart : MonoBehaviour
     public void StartFirstLevel()
     {
         ResetGameSession();
+        SceneManager.LoadScene(2);
+    }
+
+    public void StartTutorialLevel()
+    {
+        ResetGameSession();
         SceneManager.LoadScene(1);
     }
     public void BackToMenu()
