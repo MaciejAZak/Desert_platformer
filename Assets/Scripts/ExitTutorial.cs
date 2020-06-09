@@ -34,6 +34,8 @@ public class ExitTutorial : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(LoadLevelDelay);
         var currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        var tutorialScore = FindObjectOfType<GameSession>().gameObject;
+        Destroy(tutorialScore);
         SceneManager.LoadScene(currentLevelIndex - 1);
     }
 }
