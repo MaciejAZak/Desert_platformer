@@ -125,6 +125,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void FinalDeath()
+    {
+        isAlive = false;
+        myAnimator.SetTrigger("Dying");
+        GetComponent<Rigidbody2D>().velocity = DeathKick;
+    }
+
 
     private void Climb()
 
