@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9534d254c743744b93d2e6526828636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterRiseSpeed: 1
+  waterRiseSpeed: 25
 --- !u!66 &102187065
 CompositeCollider2D:
   m_ObjectHideFlags: 0

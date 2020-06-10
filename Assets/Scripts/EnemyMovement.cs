@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     PolygonCollider2D myBody;
     BoxCollider2D myPeriscope;
     [SerializeField] AudioClip SquishEnemy;
+    [SerializeField] GameObject explosion;
 
 
     // Start is called before the first frame update
@@ -43,7 +44,11 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("Squished");
             AudioSource.PlayClipAtPoint(SquishEnemy, FindObjectOfType<Camera>().transform.position);
+            GameObject exp = Instantiate(explosion) as GameObject;
+            exp.transform.position = transform.position;
             Destroy(gameObject);
+            Vector2 jumpVelocityToAdd = new Vector2(0f, 15f);
+            FindObjectOfType<Player>().GetComponent<Rigidbody2D>().velocity += jumpVelocityToAdd;
         }
     }
 
