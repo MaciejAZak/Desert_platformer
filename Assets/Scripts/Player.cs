@@ -37,7 +37,8 @@ public class Player : MonoBehaviour
     {
         if (!isAlive) { return;  }
 
-        Die();
+        DieOnEnemyTouch();
+        Spiked();
         Run();
         Climb();
         JumpValidation();
@@ -100,11 +101,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void DieOnEnemyTouch()
     {
-        // TODO: DIE ONLY WHEN FALL ON SPIKES FROM ABOVE
         // TODO: DONT DIE WHEN FALL FROM ABOVE ON ENEMIES
-        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Water")))
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");
@@ -113,6 +113,18 @@ public class Player : MonoBehaviour
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
+    private void Spiked()
+    {
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Hazards")) && GetComponent<Rigidbody2D>().velocity.y <0)
+        {
+            isAlive = false;
+            myAnimator.SetTrigger("Dying");
+            AudioSource.PlayClipAtPoint(deathSFX, FindObjectOfType<Camera>().transform.position);
+            GetComponent<Rigidbody2D>().velocity = DeathKick * 0.5f;
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        }
+    }
+
 
     private void Climb()
 
@@ -121,7 +133,7 @@ public class Player : MonoBehaviour
         //TODO: AUTOMATICALY RELEASE THE LADDER WHEN YOU REACH THE BOTTOM
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")) && controlThrow != 0)
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")) && controlThrow > 0)
         {
             climbingRightNow = true;
         }
@@ -130,13 +142,27 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Not touching ladder");
             ReleaseLadder();
-
+        }
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladders")) && !myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+        {
+            Debug.Log("Standing on top of a ladder");
+            myRigidBody.gravityScale = 0f;
+            myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, 0f);
+        }
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladders")) && controlThrow < 0)
+        {
+            climbingRightNow = true;
         }
 
         if (climbingRightNow == true)
         {
+            myTransform.transform.position = new Vector2 (Mathf.Round(myRigidBody.position.x), myTransform.transform.position.y);
             //Debug.Log("Touching ladder");
-            if (controlThrow != 0)
+            if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && controlThrow < 0)
+            {
+                ReleaseLadder();
+            }
+            else if (controlThrow != 0)
             {
                 myRigidBody.gravityScale = 0f;
                 Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, controlThrow * ClimbSpeed);
@@ -151,10 +177,10 @@ public class Player : MonoBehaviour
                 myRigidBody.velocity = playerVelocity;
                 return;
             }
+            
 
         }
     }
-
     private void ReleaseLadder()
     {
         climbingRightNow = false;
