@@ -9,6 +9,7 @@ public class ExitLevel : MonoBehaviour
     BoxCollider2D doorCollider;
     [SerializeField] float LoadLevelDelay = 3f;
     GameObject label;
+    [SerializeField] AudioClip leaveSFX;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class ExitLevel : MonoBehaviour
             Debug.Log("Touching door");
             if (Input.GetKeyDown("return"))
             {
+                AudioSource.PlayClipAtPoint(leaveSFX, FindObjectOfType<Camera>().transform.position);
                 StartCoroutine(LoadNextLevel());
                 //TODO: Fireworks + music + "Level complete"
             }

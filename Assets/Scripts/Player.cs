@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
     {
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+            if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladders")) || myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
             {
                 Jump();
             }
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
     private void DieOnEnemyTouch()
     {
         // TODO: DONT DIE WHEN FALL FROM ABOVE ON ENEMIES
-        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Water")))
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Water")) || myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");

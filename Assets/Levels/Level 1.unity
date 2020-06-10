@@ -9920,25 +9920,7 @@ Tilemap:
   m_GameObject: {fileID: 1758999361}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -6, y: -5, z: 0}
-    second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 34, y: -5, z: 0}
-    second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -6, y: -4, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 8
@@ -9956,15 +9938,6 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -6, y: -3, z: 0}
-    second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 34, y: -3, z: 0}
     second:
       m_TileIndex: 1
@@ -9974,25 +9947,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -6, y: -2, z: 0}
-    second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 34, y: -2, z: 0}
-    second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -6, y: -1, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 8
@@ -10095,7 +10050,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 19
+  - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: 09443fafbd6aa854991f8e8bb99204fd, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -10114,7 +10069,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 19
+  - m_RefCount: 14
     m_Data: {fileID: 21300000, guid: 0d10ab8d94d942043b908761de0d0612, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 0
@@ -10153,7 +10108,7 @@ Tilemap:
       e31: 1e-45
       e32: 0
       e33: 0
-  - m_RefCount: 19
+  - m_RefCount: 14
     m_Data:
       e00: 1
       e01: 0
@@ -10172,12 +10127,12 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 19
+  - m_RefCount: 14
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -6, y: -5, z: 0}
-  m_Size: {x: 69, y: 59, z: 1}
+  m_Origin: {x: -6, y: -6, z: 0}
+  m_Size: {x: 69, y: 60, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -10247,14 +10202,6 @@ CompositeCollider2D:
         Y: -50000000
       - X: 347187488
         Y: -50000000
-    - - X: -52812500
-        Y: 0
-      - X: -57187500
-        Y: 0
-      - X: -57187500
-        Y: -50000000
-      - X: -52812500
-        Y: -50000000
   m_CompositePaths:
     m_Paths:
     - - {x: 35.71875, y: 17}
@@ -10265,10 +10212,6 @@ CompositeCollider2D:
       - {x: 34.28125, y: 4}
       - {x: 34.28125, y: -5}
       - {x: 34.71875, y: -5}
-    - - {x: -5.28125, y: 0}
-      - {x: -5.71875, y: 0}
-      - {x: -5.71875, y: -5}
-      - {x: -5.28125, y: -5}
   m_VertexDistance: 0.0005
 --- !u!50 &1758999367
 Rigidbody2D:
@@ -22293,12 +22236,12 @@ PrefabInstance:
     - target: {fileID: 347420720842852586, guid: 600bb55753fee374c9b5da71eaa53e52,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.746171
+      value: 1.7698841
       objectReference: {fileID: 0}
     - target: {fileID: 347420720842852586, guid: 600bb55753fee374c9b5da71eaa53e52,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28238535
+      value: 0.28244114
       objectReference: {fileID: 0}
     - target: {fileID: 347420721447484784, guid: 600bb55753fee374c9b5da71eaa53e52,
         type: 3}

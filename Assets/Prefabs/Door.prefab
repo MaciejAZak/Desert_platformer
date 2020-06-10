@@ -233,3 +233,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadLevelDelay: 3
+  leaveSFX: {fileID: 8300000, guid: 4b5829be46cb9e84897fa7cf0c3ce7b5, type: 3}
